@@ -1,10 +1,16 @@
 
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Chart from "react-apexcharts";
 import { GlobalContext } from "../../context/index";
 
 export default function ChartPage() {
   const {  
+    dataInput,
+    setDataInput,
+    setInputValues,
+    getInputData,
+    handleChange,
+    handleSubmit,
     inputValues
     } = useContext(GlobalContext);
 

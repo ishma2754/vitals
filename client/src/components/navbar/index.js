@@ -1,13 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export default function Navbar() {
-  const [cookies, removeCookie] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const [showDetails, setShowDetails] = useState(false);
 
   const userEmail = cookies.Email;
+  const authToken = cookies.AuthToken;
   const userRole = cookies.Role;
 
   const handleSignOut = () => {
@@ -51,7 +52,7 @@ export default function Navbar() {
       <div className="circle" onClick={toggleDetails}>
         {showDetails ? (
           <div className="details">
-            <p>Welcome {userEmail}</p>
+            <p>Welcome {cookies.Email}</p>
             <button className="signup-button" onClick={handleSignOut}>
               Sign Out
             </button>

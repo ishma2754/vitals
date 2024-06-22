@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { Document, Page } from "react-pdf"; 
@@ -12,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3
 export default function ReportsPage() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [pdfReports, setPdfReports] = useState([]);
-  const [cookies] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const userEmail = cookies.Email;
 
   
@@ -33,7 +33,7 @@ export default function ReportsPage() {
 
     const formData = new FormData();
     formData.append("pdfFile", selectedFile);
-    formData.append("user_email", userEmail);
+    formData.append("user_email", cookies.Email);
 
     try {
       await axios.post(`${process.env.REACT_APP_SERVERURL}/ReportsPage`, formData);
@@ -48,7 +48,7 @@ export default function ReportsPage() {
   const fetchPdfReports = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVERURL}/ReportsPage/${userEmail}`
+        `${process.env.REACT_APP_SERVERURL}/ReportsPage/${cookies.Email}`
       );
       setPdfReports(response.data);
     } catch (error) {

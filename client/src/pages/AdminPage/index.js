@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
 import { useCookies } from "react-cookie";
 import { Document, Page } from "react-pdf";
@@ -52,7 +52,7 @@ export default function AdminFetchUser() {
 
       const inputValuesResponse = await fetch(
         `${
-         process.env.REACT_APP_SERVERURL
+          process.env.REACT_APP_SERVERURL
         }/AdminPage/InputValues/${userEmail}`,
         {
           method: "GET",

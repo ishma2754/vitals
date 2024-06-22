@@ -12,7 +12,8 @@ import AdminFetchUser from "./pages/AdminPage";
 import { useCookies } from "react-cookie";
 
 function App() {
-  const [cookies] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const userEmail = cookies.Email;
   const authToken = cookies.AuthToken;
   const userRole = cookies.Role;
 
