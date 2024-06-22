@@ -9,6 +9,8 @@ const pool = require("./db");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
+
 const {
   S3Client,
   PutObjectCommand,
@@ -32,8 +34,12 @@ const s3Client = new S3Client({
   },
 });
 
+
+
 app.use(cors());
 app.use(express.json());
+
+
 
 const generateFileName = (bytes = 32) =>
   crypto.randomBytes(bytes).toString("hex");
