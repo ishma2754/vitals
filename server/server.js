@@ -40,6 +40,12 @@ app.use(cors());
 app.use(express.json());
 
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+
+
 
 const generateFileName = (bytes = 32) =>
   crypto.randomBytes(bytes).toString("hex");
