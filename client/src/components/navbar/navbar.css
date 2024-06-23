@@ -30,6 +30,7 @@ nav ul {
   display: flex;
   margin: 0; /* Ensure no margin */
   padding: 0; /* Ensure no padding */
+  list-style: none;
 }
 
 nav ul li {
@@ -54,9 +55,6 @@ nav ul li a:not(.active):hover {
 
 nav .menu {
   display: none;
-  position: absolute;
-  top: 0.75rem;
-  right: 0.5rem;
   flex-direction: column;
   justify-content: space-between;
   width: 2.25rem;
@@ -71,7 +69,8 @@ nav .menu span {
   border-radius: 0.2rem;
 }
 
-.circle {
+.circle,
+.admin-circle {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -86,7 +85,8 @@ nav .menu span {
   margin-right: 10px;
 }
 
-.details {
+.details,
+.admin-details {
   position: absolute;
   top: 80px; /* Ensure it is below the navbar */
   right: 10px;
@@ -126,6 +126,13 @@ nav .menu span {
   background-color: #735d85;
 }
 
+.admin-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .circle {
     width: 35px;
@@ -144,21 +151,15 @@ nav .menu span {
 
   nav ul {
     flex-direction: column;
+    display: none; /* Hide the menu initially */
+    width: 100%;
+    background-color: #32174D; /* Background color of the menu */
     margin: 0; /* Remove margin */
     padding: 0; /* Remove padding */
-  }
-
-  nav ul li.circle {
-    margin: 0.5rem auto;
   }
 
   nav ul.open {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
-    background-color: #32174D; /* Background color of the menu */
+    display: flex; /* Show the menu when open */
   }
 
   nav ul li {
@@ -199,24 +200,45 @@ nav .menu span {
 
 @media (max-width: 480px) {
   nav .menu {
-    display: flex;
+    display: flex; /* Show the menu icon on mobile */
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
   }
 
   nav {
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
+    flex-direction: row; /* Change to row for horizontal alignment */
+    align-items: center;
+    justify-content: space-between; /* Ensure space between items */
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .admin-circle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust to space between */
+    width: 100%;
+    padding: 0 1rem; /* Add padding to align properly */
+  }
+
+  .admin-circle-container .admin-circle {
+    margin-left: auto; /* Move admin circle to the right */
   }
 
   nav ul {
     display: none;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 0.25rem;
     background-color: #32174D; /* Background color of the menu */
     margin: 0; /* Remove margin */
     padding: 0; /* Remove padding */
+    position: absolute;
+    top: 80px; /* Position below the navbar */
+    left: 0;
+    z-index: 1;
   }
 
   nav ul.open {

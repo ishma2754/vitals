@@ -29,18 +29,32 @@ export default function Navbar() {
 
   return (
     <nav>
+      <div className="admin-circle-container">
+        <NavLink
+          to={userRole === "admin" ? "/AdminPage" : "/"}
+          className="logo-link"
+        >
+          <img src="/logo.png" alt="VitalOrgans" className="logo" />
+        </NavLink>
+        {userRole === "admin" && (
+          <div className="admin-circle" onClick={toggleDetails}>
+            <span>{firstLetter}</span>
+          </div>
+        )}
+      </div>
       {userRole === "admin" ? (
         <>
-          <NavLink to="/AdminPage" className="logo-link title">
-            <img src="/logo.png" alt="VitalOrgans" className="logo" />
-          </NavLink>
+          {showDetails && (
+            <div className="admin-details">
+              <p>Welcome {cookies.Email}</p>
+              <button className="signup-button" onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </div>
+          )}
         </>
       ) : (
         <>
-          <NavLink to="/" className="logo-link">
-            <img src="/logo.png" alt="VitalOrgans" className="logo" />
-          </NavLink>
-
           <ul className={menuOpen ? "open" : ""}>
             <li>
               <NavLink to="/Input">Vitals</NavLink>
@@ -63,14 +77,13 @@ export default function Navbar() {
               </li>
             )}
           </ul>
+          <div className="menu" onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </>
       )}
-
-      <div className="menu" onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
     </nav>
   );
 }

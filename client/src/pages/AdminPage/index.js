@@ -118,7 +118,7 @@ export default function AdminFetchUser() {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <div className="admin-fetch-user mx-8 flex-grow">
+        <div className="admin-fetch-user mx-4 flex-grow">
           <h2 className="text-xl font-bold leading-tight tracking-tight text-RussianViolet md:text-2xl dark:text-white mb-5 mt-5">
             FETCH USER DATA
           </h2>
@@ -221,7 +221,7 @@ export default function AdminFetchUser() {
                       </div>
                       <div>
                         <div className="font-semibold text-underlineHome">
-                          Blood Glucose(Fasting) mg/dL
+                          Blood Glucose(F) mg/dL
                         </div>
                         <div className="text-inputTextColor" >{userData.inputValues[0].bloodglucosefasting}</div>
                       </div>

@@ -82,7 +82,7 @@ export default function ChartPage() {
             labels: {
               style: {
                 colors: '#32174D',
-                fontSize: '14px',
+                fontSize: '10px',
                 fontWeight: 'bold',
               },
             },
@@ -91,7 +91,7 @@ export default function ChartPage() {
             labels: {
               style: {
                 colors: '#32174D',
-                fontSize: '14px',
+                fontSize: '10px',
                 fontWeight: 'bold',
               },
             },
