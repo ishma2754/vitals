@@ -93,7 +93,7 @@ export default function Home() {
         <UserCircleIcon className="h-20 w-20 text-gray-600" />
       </div>
 
-      <form className="max-w-md mx-auto" onSubmit={handleSubmitHome}>
+      <form className="max-w-md mx-4 lg:mx-auto" onSubmit={handleSubmitHome}>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -236,7 +236,7 @@ export default function Home() {
         </button>
       </form>
 
-      <div className="max-w-md mx-auto border-4 border-RussianViolet rounded-lg p-4 mt-8">
+      <div className="max-w-md mx-4 lg:mx-auto border-4 border-RussianViolet rounded-lg p-4 mt-8">
         <h2 className="text-lg text-inputTextColor font-semibold mb-4">USER DETAILS</h2>
         <div className="">
           {sortedFormData?.map((formDataItem) => (

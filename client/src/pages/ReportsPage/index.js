@@ -94,7 +94,7 @@ export default function ReportsPage() {
                   <Page pageNumber={1} scale={0.8} />
                 </Document>
               </div>
-              <div className="mt-2">
+              <div className="mt-2 flex justify-between ">
                 <a
                   href={report.signedurl}
                   className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-6"

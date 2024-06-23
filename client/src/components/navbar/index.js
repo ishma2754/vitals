@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 export default function Navbar() {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const userEmail = cookies.Email;
   const authToken = cookies.AuthToken;
@@ -21,21 +22,25 @@ export default function Navbar() {
     setShowDetails(!showDetails);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav>
       {userRole === "admin" ? (
         <>
           <NavLink to="/AdminPage" className="logo-link title">
-          <img src="/logo.png" alt="VitalOrgans" className="logo" />
+            <img src="/logo.png" alt="VitalOrgans" className="logo" />
           </NavLink>
         </>
       ) : (
         <>
           <NavLink to="/" className="logo-link">
-          <img src="/logo.png" alt="VitalOrgans" className="logo" />
+            <img src="/logo.png" alt="VitalOrgans" className="logo" />
           </NavLink>
 
-          <ul>
+          <ul className={menuOpen ? "open" : ""}>
             <li>
               <NavLink to="/Input">Vitals</NavLink>
             </li>
@@ -45,21 +50,25 @@ export default function Navbar() {
             <li>
               <NavLink to="/ReportsPage">Reports</NavLink>
             </li>
+            <li className="circle" onClick={toggleDetails}>
+              <span></span>
+            </li>
+            {showDetails && (
+              <li className="details">
+                <p>Welcome {cookies.Email}</p>
+                <button className="signup-button" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </li>
+            )}
           </ul>
         </>
       )}
 
-      <div className="circle" onClick={toggleDetails}>
-        {showDetails ? (
-          <div className="details">
-            <p>Welcome {cookies.Email}</p>
-            <button className="signup-button" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <span></span>
-        )}
+      <div className="menu" onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </nav>
   );
