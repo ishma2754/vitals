@@ -119,21 +119,19 @@ export default function AdminFetchUser() {
     <>
       <div className="flex flex-col min-h-screen">
         <div className="admin-fetch-user mx-4 flex-grow">
-          <h2 className="text-xl font-bold leading-tight tracking-tight text-RussianViolet md:text-2xl dark:text-white mb-5 mt-5">
+          <h2 className="text-xl font-bold leading-tight tracking-tight text-RussianViolet md:text-2xl mb-5 mt-5">
             FETCH USER DATA
           </h2>
           <input
             type="email"
             placeholder="Enter user email"
             className="bg-gray-50 border-2 border-underlineHome text-inputTextColor text-sm rounded-lg focus:ring-RussianViolet focus:border-RussianViolet
-            block w-full md:w-1/4 p-2.5 
-            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            block w-full md:w-1/4 p-2.5 "
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
           />
           <button
-            className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 block mt-4"
+            className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center block mt-4"
             onClick={handleFetch}
           >
             Fetch Data
@@ -244,7 +242,7 @@ export default function AdminFetchUser() {
                 {userData.pdfData.map((report) => (
                   <div
                     key={report.id}
-                    className="pdf-item relative rounded-lg border-RussianViolet bg-white border-4  shadow dark:bg-gray-800 dark:border-gray-700"
+                    className="pdf-item relative rounded-lg border-RussianViolet bg-white border-4  shadow"
                   >
                     <div className="pdf-details p-5 relative">
                       <h3 className="font-bold text-underlineHome">{report.file_name}</h3>
@@ -256,7 +254,7 @@ export default function AdminFetchUser() {
                       <div className="mt-2">
                         <a
                           href={report.signedurl}
-                           className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                           className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-bold rounded-lg text-sm px-5 py-2.5 text-center"
                           style={{ display: "inline-block" }}
                         >
                           Download PDF
@@ -271,14 +269,14 @@ export default function AdminFetchUser() {
         </div>
 
         <footer className="bg-RussianViolet mt-8">
-          <div className="px-4 py-6 bg-RussianViolet dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <div className="px-4 py-6 bg-RussianViolet md:flex md:items-center md:justify-between">
             <span className="text-sm text-white sm:text-center">
               © 2024 <a href="#">VitalOrgans</a> By ISHMA KHAN
             </span>
             <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
               <a
                 href="mailto:your_ishmakhan1995@gmail.com"
-                className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                className="text-gray-400 hover:text-gray-900"
               >
                 <svg
                   className="w-6 h-6 text-white hover:text-hoverColor"
