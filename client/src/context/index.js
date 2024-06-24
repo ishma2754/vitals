@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import PropTypes from "prop-types";
+import { format, parseISO } from "date-fns";
 
 export const GlobalContext = createContext(null);
 
@@ -17,7 +18,27 @@ export default function GlobalState({ children }) {
         `${process.env.REACT_APP_SERVERURL}/Input/${userEmail}`
       );
       const json = await response.json();
-      setInputValues(json);
+      const adjustedDates = json.map((data) => ({
+        ...data,
+        date: format(parseISO(data.date), "yyyy-MM-dd"),
+      }));
+      setInputValues(adjustedDates);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteInputData = async (id) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVERURL}/Input/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.status === 200) {
+        getInputData();
+      }
     } catch (err) {
       console.error(err);
     }
@@ -63,15 +84,16 @@ export default function GlobalState({ children }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setDataInput((dataInput) => ({
       ...dataInput,
-      [name]: value,
+      [name]: name === "date" ? format(new Date(value), "yyyy-MM-dd") : value,
     }));
-
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await postInputData();
   };
 
@@ -84,6 +106,7 @@ export default function GlobalState({ children }) {
         inputValues,
         setInputValues,
         getInputData,
+        deleteInputData,
         postInputData,
         handleChange,
         handleSubmit,
@@ -96,8 +119,6 @@ export default function GlobalState({ children }) {
       {children}
     </GlobalContext.Provider>
   );
-
-
 }
 
 GlobalState.propTypes = {

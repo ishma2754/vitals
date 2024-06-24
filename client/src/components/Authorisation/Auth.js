@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./index.css";
 import { useCookies } from "react-cookie";
 
 export default function Auth() {
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [, setCookie] = useCookies(null);
   const [isLogIn, setIsLogIn] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -75,9 +75,12 @@ export default function Auth() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
 
+              <label htmlFor="licenseKey" className="label-license">
+                License Key * for Hospital/Clinic 
+              </label>
               <input
                 type="text"
-                placeholder="license key for Hospital/Clinic (ex. HSP-1234-2024-IN)"
+                placeholder="HSP-#####-YYYY-IN (eg. HSP-12345-2024-IN)"
                 onChange={(e) => setLicenseKey(e.target.value)}
               />
             </>
@@ -90,7 +93,6 @@ export default function Auth() {
           />
 
           {error && <p className="error">{error}</p>}
-       
         </form>
 
         <div className="auth-options">

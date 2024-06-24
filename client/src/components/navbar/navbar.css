@@ -105,7 +105,8 @@ nav .menu span {
   z-index: 10; /* Ensure it is above other content */
 }
 
-.details p {
+.details p,
+.admin-details p {
   margin: 0 0 10px 0;
   font-size: 1em;
   font-weight: bold;

@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export default function Navbar() {
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [cookies, , removeCookie] = useCookies(null);
   const [showDetails, setShowDetails] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const userEmail = cookies.Email;
-  const authToken = cookies.AuthToken;
   const userRole = cookies.Role;
 
   const handleSignOut = () => {

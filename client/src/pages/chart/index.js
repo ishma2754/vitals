@@ -1,18 +1,14 @@
-
-import React, { useContext } from "react";
+import { useContext, useEffect} from "react";
 import Chart from "react-apexcharts";
 import { GlobalContext } from "../../context/index";
 
 export default function ChartPage() {
-  const {  
-    dataInput,
-    setDataInput,
-    setInputValues,
-    getInputData,
-    handleChange,
-    handleSubmit,
-    inputValues
-    } = useContext(GlobalContext);
+  const { inputValues, getInputData, deleteInputData} = useContext(GlobalContext);
+
+  
+  useEffect(() => {
+    getInputData();
+  }, []);
 
   const sortedInputValues = inputValues?.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
@@ -58,7 +54,7 @@ export default function ChartPage() {
             y: inputValuesItem.bloodglucosefasting,
           },
           { x: "Blood Glucose PP", y: inputValuesItem.bloodglucosepp },
-          { x: "Creatinine", y:inputValuesItem.creatinine },
+          { x: "Creatinine", y: inputValuesItem.creatinine },
         ];
 
         const colors = seriesData.map((dataPoint) =>
@@ -73,31 +69,31 @@ export default function ChartPage() {
             },
             animations: {
               enabled: true,
-              easing: 'easeinout',
+              easing: "easeinout",
               speed: 800,
-            }
+            },
           },
           xaxis: {
             categories: seriesData.map((data) => data.x),
             labels: {
               style: {
-                colors: '#32174D',
-                fontSize: '10px',
-                fontWeight: 'bold',
+                colors: "#32174D",
+                fontSize: "10px",
+                fontWeight: "bold",
               },
             },
           },
           yaxis: {
             labels: {
               style: {
-                colors: '#32174D',
-                fontSize: '10px',
-                fontWeight: 'bold',
+                colors: "#32174D",
+                fontSize: "10px",
+                fontWeight: "bold",
               },
             },
           },
           grid: {
-            borderColor: 'none',
+            borderColor: "none",
           },
           plotOptions: {
             bar: {
@@ -120,13 +116,16 @@ export default function ChartPage() {
               return val;
             },
             tooltip: {
-              theme: 'light',
+              theme: "light",
             },
           },
         };
 
         return (
-          <div key={inputValuesItem.id} className="mb-4 border-4 rounded-lg border-underlineHome p-4">
+          <div
+            key={inputValuesItem.id}
+            className="mb-4 border-4 rounded-lg border-underlineHome p-4"
+          >
             <div className="text-center font-semibold mb-2">
               {inputValuesItem.date}
             </div>
@@ -145,6 +144,14 @@ export default function ChartPage() {
               type="bar"
               height={350}
             />
+             <div className="flex justify-center mt-2">
+              <button
+                 onClick={() => deleteInputData(inputValuesItem.id)}
+                className="text-white bg-buttonColor hover:bg-hoverButtonColor focus:ring-4 focus:outline-none focus:ring-RussianViolet font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         );
       })}

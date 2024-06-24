@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import {useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 import { UserCircleIcon } from "@heroicons/react/outline";
 
 export default function Home() {
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [cookies] = useCookies(null);
   const userEmail = cookies.Email;
   const authToken = cookies.AuthToken;
   const [formData, setFormData] = useState(null);

@@ -1,8 +1,6 @@
-import React from "react";
-
 export default function Footer() {
   return (
-    <footer className="bg-RussianViolet mt-8" >
+    <footer className="bg-RussianViolet mt-8">
       <div className="px-4 py-6 md:flex md:items-center md:justify-between">
         <span className="text-sm text-white sm:text-center">
           © 2024 <a href="#">VitalOrgans</a> By ISHMA KHAN
@@ -10,7 +8,7 @@ export default function Footer() {
         <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
           <a
             href="mailto:your_ishmakhan1995@gmail.com"
-           className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-6 h-6 text-white hover:text-hoverColor"

@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../context/index";
 
+
+
 export default function Input() {
   const {
     dataInput,
     handleChange,
     handleSubmit,
   } = useContext(GlobalContext);
+
+  
 
   return (
     <>
